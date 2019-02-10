@@ -1,0 +1,73 @@
+﻿@model JobApplication
+@{
+    ViewBag.Title = "Application details";
+}
+<div class="row">
+    <h2>Application details</h2>
+    <div class="col-sm-12">
+        <div>
+            <label>
+                First name:
+            </label>
+            <span>
+                @Model.FirstName
+            </span>
+        </div>
+        <div>
+            <label>
+                Last name:
+            </label>
+            <span>
+                @Model.LastName
+            </span>
+        </div>
+        <div>
+            <label>
+                Phone number:
+            </label>
+            <span>
+                @Model.PhoneNumber
+            </span>
+        </div>
+        <div>
+            <label>
+                Email address:
+            </label>
+            <span>
+                @Model.EmailAddress
+            </span>
+        </div>
+        <div>
+            <label>
+                Contact agreement:
+            </label>
+            <span>
+                @if (Model.ContactAgreement == true)
+                {
+                    <text>Yes</text>
+                }
+                else
+                {
+                    <text>No</text>
+                }
+            </span>
+        </div>
+        <div>
+            <label>
+                Date of birth:
+            </label>
+            <span>
+                @Model.Birthday
+            </span>
+        </div>
+        @if (String.IsNullOrEmpty(Model.CvUrl))
+        {
+            <text>Candidate does not load a CV</text>
+        }
+        else
+        {
+            <a href="@Model.CvUrl" class="btn btn-primary">Go to CV</a>
+        }
+        @Html.ActionLink("Go back to Job Offer", "Details", "JobOffer", new { id = Model.OfferId }, new { @class = "btn btn-primary" })
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿@model Company
+@{
+    ViewBag.Title = "Company";
+}
+<div class="row page-box">
+    <h1>Company details</h1>
+    <div class="col-sm-8">
+        <div>
+            <label>
+                Company:
+            </label>
+            <span>
+                @Model.Name
+            </span>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+            @using (Html.BeginForm("Delete", "Company", new { Model.Id }, FormMethod.Post, null, new { style = "display:inline;" }))
+            {
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-danger">Delete</button>
+            }
+        </div>
+    </div>
+    @Html.ActionLink("Go back to company's list", "Index", "Company", null, new { @class = "btn btn-primary" })
+</div>
